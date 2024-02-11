@@ -14,7 +14,7 @@ public class PhoneBook {
     public PhoneBook() {
         phoneBook = new HashMap<>();
     }
-// Ввод контакта
+// Метод addContact добавляет контакт в телефонную книгу
     public void addContact(String name, String phone) {
         if (phoneBook.containsKey(name)) {
             List<String> phones = phoneBook.get(name);
@@ -25,3 +25,17 @@ public class PhoneBook {
             phoneBook.put(name, phones);
         }
     }
+//Метод removeContact удаляет контакт из телефонной книги по имени.
+public void removeContact(String name) {
+    phoneBook.remove(name);
+}
+//Метод removePhone удаляет конкретный телефон из списка телефонов контакта по имени контакта.
+public void removePhone(String name, String phone) {
+    if (phoneBook.containsKey(name)) {
+        List<String> phones = phoneBook.get(name);
+        phones.remove(phone);
+        if (phones.isEmpty()) {
+            phoneBook.remove(name);
+        }
+    }
+}
